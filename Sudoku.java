@@ -3,7 +3,7 @@ import java.util.Arrays; // needed to sort, clone and convert the array to Strin
 /**
  * The Sudoku class is used to check whether a
  given sudoku solution is valid or not.
- * Date modified: March 14th, 2018
+ * Date modified: March 19th, 2018
  * @author Akash Kumar
  * @author James McCarthy
  * @author Keyshawn Wright
