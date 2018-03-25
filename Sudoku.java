@@ -1,4 +1,5 @@
 import java.util.Arrays; // needed to sort, clone and convert the array to String.
+import java.util.stream.*;
 
 /**
  * The Sudoku class is used to check whether a
@@ -60,7 +61,41 @@ public class Sudoku
   private boolean areRowsValid()
   {
     boolean rowFlag = true; // assume to be true unless proven otherwise.
+    int i = 0;
+    int sum = IntStream.of(sudokuArray).sum();
+    
+    if (sudokuArray.length != sudokuSolution.length)
+    {
+    
+      rowFlag = false;
+    
+    }
+    
+    else
+    {for (int i: sudokuArray)
+    {
+    
+      if (sum != 45)
+      {
+         rowFlag = false;
+      }
+      
+      else 
+      {
+      
+         rowFlag = true;
+         
+      }
+    
+    }
+    
+    }
+    
+    
     return rowFlag;
+    
+    }
+
   }
 
   // checks if columns in the sudoku puzzle are valid.
@@ -120,7 +155,7 @@ public class Sudoku
    */
   public void showSudoku()
   {
-  
+  System.out.println(sudokuArray);
   }
 
 } // end Sudoku class
