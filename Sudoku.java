@@ -3,8 +3,8 @@ import java.util.stream.*;// needed to create number sequence.
 
 /**
  * The Sudoku class is used to check whether a
- given sudoku solution is valid or not.
- * Date modified: March 19th, 2018
+   given sudoku solution is valid or not.
+ * Date modified: March 25th, 2018
  * @author Akash Kumar
  * @author James McCarthy
  * @author Keyshawn Wright
@@ -44,7 +44,7 @@ public class Sudoku
     boolean validSudoku = false; // flag.
 
     //for testing...delete when homework is finished.
-    if(areGridsValid())
+    if(areColumnsValid())
       return true;
     
     /*
@@ -62,10 +62,12 @@ public class Sudoku
   private boolean areRowsValid()
   {
     boolean rowFlag = true; // assume to be true unless proven otherwise.
+    int sum = 0;            // holds sum of nums in row.
+    
     for(int i = 0; i < sudokuArray.length; ++i)
     {
-      int sum = IntStream.of(sudokuArray[0]).sum(); // sum of sub-array.
-
+      sum = IntStream.of(sudokuArray[0]).sum(); // sum of sub-array.
+      // check if row is valid.
       if (sum != 45)
       {
         rowFlag = false;
@@ -79,18 +81,22 @@ public class Sudoku
   private boolean areColumnsValid()
   {
     boolean columnFlag = true; // assume to be true unless proven otherwise.
-    int ctotal = 0;
-            for (int i = 0; i < sudokuArray.length; i++)
-            {
-               for (int j = 0; j < sudokuArray.length; j++)
-               {
-                  ctotal += sudokuArray[i][j];
-                  if (ctotal != 405)
-                     {
-                       columnFlag = false;
-                     }
-               }
-            }
+    // row loop.
+    for (int i = 0; i < sudokuArray.length; i++)
+    {
+      int ctotal = 0; // column total.
+      // column loop.
+      for (int j = 0; j < sudokuArray.length; j++)
+      {
+        ctotal += sudokuArray[j][i];
+      }
+      // check if column is valid.
+      if (ctotal != 45)
+      {
+        columnFlag = false;
+      }
+    }
+    
     return columnFlag;
   }
 
@@ -151,5 +157,4 @@ public class Sudoku
     }
     System.out.println("]"); // closing brace.
   }
-
 } // end Sudoku class
