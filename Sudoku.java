@@ -79,6 +79,18 @@ public class Sudoku
   private boolean areColumnsValid()
   {
     boolean columnFlag = true; // assume to be true unless proven otherwise.
+    int ctotal = 0;
+            for (int i = 0; i < sudokuArray.length; i++)
+            {
+               for (int j = 0; j < sudokuArray.length; j++)
+               {
+                  ctotal += sudokuArray[i][j];
+                  if (ctotal != 405)
+                     {
+                       columnFlag = false;
+                     }
+               }
+            }
     return columnFlag;
   }
 
