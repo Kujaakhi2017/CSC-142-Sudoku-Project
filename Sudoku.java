@@ -1,5 +1,5 @@
-import java.util.Arrays; // needed to sort, clone and convert the array to String.
-import java.util.stream.*;
+import java.util.Arrays;  // needed to sort, clone and convert the array to String.
+import java.util.stream.*;// needed to create number sequence.
 
 /**
  * The Sudoku class is used to check whether a
@@ -43,16 +43,17 @@ public class Sudoku
   {
     boolean validSudoku = false; // flag.
 
-    /* for testing...delete when homework is finished.
-    if(areRowsValid())
+    //for testing...delete when homework is finished.
+    if(areGridsValid())
       return true;
-    */
     
+    /*
     // if all 3 conditions of sudoku puzzle are met, set flag to true.
     if(areRowsValid() && areColumnsValid() && areGridsValid())
     {
       validSudoku = true;
     }
+    */
 
     return validSudoku;
   }
@@ -61,41 +62,17 @@ public class Sudoku
   private boolean areRowsValid()
   {
     boolean rowFlag = true; // assume to be true unless proven otherwise.
-    int i = 0;
-    int sum = IntStream.of(sudokuArray).sum();
-    
-    if (sudokuArray.length != sudokuSolution.length)
+    for(int i = 0; i < sudokuArray.length; ++i)
     {
-    
-      rowFlag = false;
-    
-    }
-    
-    else
-    {for (int i: sudokuArray)
-    {
-    
+      int sum = IntStream.of(sudokuArray[0]).sum(); // sum of sub-array.
+
       if (sum != 45)
       {
-         rowFlag = false;
+        rowFlag = false;
       }
-      
-      else 
-      {
-      
-         rowFlag = true;
-         
-      }
-    
-    }
-    
-    }
-    
+    } 
     
     return rowFlag;
-    
-    }
-
   }
 
   // checks if columns in the sudoku puzzle are valid.
@@ -155,7 +132,12 @@ public class Sudoku
    */
   public void showSudoku()
   {
-  System.out.println(sudokuArray);
+    System.out.println("["); // opening brace.
+    for(int i = 0; i < sudokuArray.length; ++i)
+    {
+      System.out.println(Arrays.toString(sudokuArray[i]));
+    }
+    System.out.println("]"); // closing brace.
   }
 
 } // end Sudoku class
